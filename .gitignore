@@ -1,6 +1,6 @@
 CHINESE-OCR/demo.py
 CHINESE-OCR/test/*
-CHINESE-OCR/ctpn/lib/*
+#CHINESE-OCR/ctpn/lib/*.pyc
 CHINESE-OCR/ctpn/logs/*
 CHINESE-OCR/ocr/model_tf.py
 CHINESE-OCR/save_model/*
