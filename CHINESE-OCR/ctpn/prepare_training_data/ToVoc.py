@@ -105,8 +105,10 @@ if __name__ == '__main__':
     _dest_label_dir, _dest_img_dir, _dest_set_dir = build_voc_dirs(_outdir)
     _doncateothers = bool(1)
     for dset in ['train']:
-        _labeldir = 'label_tmp'
-        _imagedir = 're_image'
+        _labeldir = '/home/leo/PythonProjects/CHINESE-OCR/CHINESE-OCR_workspace/ctpn_data/VOCdevkit/VOC2007/ImageSets/Main/val'
+        _imagedir = '/home/leo/PythonProjects/CHINESE-OCR/CHINESE-OCR_workspace/ctpn_data/VOCdevkit/VOC2007'
+        #_labeldir = 'label_tmp'
+        #_imagedir = 're_image'
         class_sets = ('text', 'dontcare')
         class_sets_dict = dict((k, i) for i, k in enumerate(class_sets))
         allclasses = {}
