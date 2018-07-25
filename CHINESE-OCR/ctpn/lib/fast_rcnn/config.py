@@ -239,6 +239,10 @@ __C.ROOT_DIR = osp.abspath(osp.join(osp.dirname(__file__), '..', '..'))
 # 将voc的文件位置移到仓库外部
 # docker控制台需要样本的地址(VOC2007上一层)
 __C.DATA_DIR = '/workspace/ctpn_data/VOCdevkit/'
+
+
+# 预训练的在VGG16模型的基础上，训练0、90、180、270度检测的分类模型.
+__C.PRETRAIND_MODEL_DIR = '/workspace/CHINESE-OCR/save_model/angle/VGG_imagenet.npy'
 # Pycharm需要的地址
 #__C.DATA_DIR = '/home/leo/PythonProjects/CHINESE-OCR/CHINESE-OCR_workspace/ctpn_data/VOCdevkit/'
 
