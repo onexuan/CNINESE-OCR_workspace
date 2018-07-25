@@ -68,9 +68,12 @@ testFlaskjosn.js	测试Flask服务开启后，客户端的json接收例子
 		'/Users/xiaofeng/Code/Github/dataset/CHINESE_OCR/ctpn/pretrain/VGG_imagenet.npy',
 	    为
 		注释掉(无预训练模型,模型在/home/leo/PythonProjects/CHINESE-OCR/CHINESE-OCR_workspace/CHINESE-OCR/save_model/ctpn_checkpoints)
-	>> ./CHINESE-OCR_install_manager.sh
-	>> cd /workspace/CHINESE-OCR/ctpn/ctpn
-	>> python train_net.py
+>> ./CHINESE-OCR_install_manager.sh
+>>cd /workspace/CHINESE-OCR/ctpn/output/ctpn_end2end/voc_2007_trainval/
+>> rm VGGnet_fast*
+>> rm checkpoint
+>> cd /workspace/CHINESE-OCR/ctpn/ctpn
+>> python train_net.py
 
 
 ##########################################
