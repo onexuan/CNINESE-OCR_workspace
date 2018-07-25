@@ -53,6 +53,8 @@ RUN conda install torchvision -c soumith
 ADD entrypoint.sh /opt/config/
 CMD ["/opt/config/entrypoint.sh","make.sh"]
 
+ENV LANG C.UTF-8
+ENV LC_ALL C.UTF-8
 
 WORKDIR /workspace
 EXPOSE 8001
