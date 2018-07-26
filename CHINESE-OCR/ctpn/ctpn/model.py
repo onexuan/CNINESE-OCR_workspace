@@ -33,7 +33,9 @@ def load_tf_model():
     # sess = tf.Session(config=config)
     sess = tf.Session()
     ckpt = tf.train.get_checkpoint_state(
-        './save_model/ctpn_checkpoints/')
+        './ctpn/output/ctpn_end2end/voc_2007_trainval')
+    #ckpt = tf.train.get_checkpoint_state(
+    #    './save_model/ctpn_checkpoints/')
     #ckpt = tf.train.get_checkpoint_state(
     #    '/Users/xiaofeng/Code/Github/dataset/CHINESE_OCR/ctpn/ctpn_checkpoints/')
     reader = tf.train.NewCheckpointReader(ckpt.model_checkpoint_path)

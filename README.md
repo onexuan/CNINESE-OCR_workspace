@@ -59,18 +59,14 @@ testFlaskjosn.js	测试Flask服务开启后，客户端的json接收例子
 2） /home/leo/PythonProjects/CHINESE-OCR/CHINESE-OCR_workspace/CHINESE-OCR/ctpn/ctpn/text.yml
 	是否更改 “NCLASSES: 2” 后面分类数2
 4. 备份model
-	备份/home/leo/PythonProjects/CHINESE-OCR/CHINESE-OCR_workspace/CHINESE-OCR/save_model/ctpn_checkpoints
+备份/home/leo/PythonProjects/CHINESE-OCR/CHINESE-OCR_workspace/CHINESE-OCR/ctpn/output/ctpn_end2end/voc_2007_trainval
+	(废,该文件夹不保存模型)备份/home/leo/PythonProjects/CHINESE-OCR/CHINESE-OCR_workspace/CHINESE-OCR/save_model/ctpn_checkpoints
 
 5. 训练
 	
-	1） 修改如下路径
-		pretrained_model=
-		'/Users/xiaofeng/Code/Github/dataset/CHINESE_OCR/ctpn/pretrain/VGG_imagenet.npy',
-	    为
-		注释掉(无预训练模型,模型在/home/leo/PythonProjects/CHINESE-OCR/CHINESE-OCR_workspace/CHINESE-OCR/save_model/ctpn_checkpoints)
-	>> ./CHINESE-OCR_install_manager.sh
-	>> cd /workspace/CHINESE-OCR/ctpn/ctpn
-	>> python train_net.py
+>> ./CHINESE-OCR_install_manager.sh
+>> cd /workspace
+>> ./trainCTPN.sh
 
 
 ##########################################
@@ -86,6 +82,10 @@ testFlaskjosn.js	测试Flask服务开启后，客户端的json接收例子
 		Main\	放训练配置文件
 		Segmentation\
 	JPEGImages\ 放图片
+	label\放gt_000000.txt文件
+2. 标注图片
+	然后运行/home/leo/PythonProjects/CHINESE-OCR/CHINESE-OCR_workspace/CHINESE-OCR/ctpn/prepare_training_data/split_label.py
+
 2. JPEGImages\ 放图片,需要重命名为000005.jpg形式(图片必须为jpg格式)
 执行  python ctpnImgNameTo000Style.py
 
@@ -105,8 +105,6 @@ for file in filelist:   #遍历所有文件
     Newdir=os.path.join(path,str(count).zfill(6)+filetype)  #用字符串函数zfill 以0补全所需位数
     os.rename(Olddir,Newdir)#重命名
     count+=1
-
-2. labelImg 标注自己的图片
 
 
 3. ImageSets\Main里的四个txt文件

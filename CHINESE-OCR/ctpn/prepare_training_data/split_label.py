@@ -3,9 +3,15 @@ import numpy as np
 import math
 import cv2 as cv
 
-path = '/media/D/code/OCR/text-detection-ctpn/data/mlt_english+chinese/image'
-gt_path = '/media/D/code/OCR/text-detection-ctpn/data/mlt_english+chinese/label'
-out_path = 're_image'
+path = '/workspace/ctpn_data/VOCdevkit/VOC2007/OriginalJPEGImages'
+gt_path = '/workspace/ctpn_data/VOCdevkit/VOC2007/label'
+#path = '/home/leo/PythonProjects/CHINESE-OCR/CHINESE-OCR_workspace/ctpn_data/VOCdevkit/VOC2007/JPEGImages'
+#gt_path = '/home/leo/PythonProjects/CHINESE-OCR/CHINESE-OCR_workspace/ctpn_data/VOCdevkit/VOC2007/label'
+
+#path = '/media/D/code/OCR/text-detection-ctpn/data/mlt_english+chinese/image'
+#gt_path = '/media/D/code/OCR/text-detection-ctpn/data/mlt_english+chinese/label'
+out_path = '/workspace/ctpn_data/VOCdevkit/VOC2007/JPEGImages'
+#out_path = 're_image'
 if not os.path.exists(out_path):
     os.makedirs(out_path)
 files = os.listdir(path)
