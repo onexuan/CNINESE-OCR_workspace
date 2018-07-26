@@ -83,8 +83,6 @@ testFlaskjosn.js	测试Flask服务开启后，客户端的json接收例子
 		Segmentation\
 	JPEGImages\ 放图片
 	label\放gt_000000.txt文件
-2. 标注图片
-	然后运行/home/leo/PythonProjects/CHINESE-OCR/CHINESE-OCR_workspace/CHINESE-OCR/ctpn/prepare_training_data/split_label.py
 
 2. JPEGImages\ 放图片,需要重命名为000005.jpg形式(图片必须为jpg格式)
 执行  python ctpnImgNameTo000Style.py
@@ -106,8 +104,10 @@ for file in filelist:   #遍历所有文件
     os.rename(Olddir,Newdir)#重命名
     count+=1
 
+3. 标注图片,形成类似gt_000000.txt文件,每行8个左边,表示方框的四角坐标点
+	
 
-3. ImageSets\Main里的四个txt文件
+4. ImageSets\Main里的四个txt文件(通过执行trainCTPN.sh生成)
 	test.txt是测试集
 	train.txt是训练集
 	val.txt是验证集
@@ -117,53 +117,6 @@ for file in filelist:   #遍历所有文件
 根据已生成的xml，制作VOC2007数据集中的trainval.txt ； train.txt ； test.txt ； val.txt
 trainval占总数据集的50%，test占总数据集的50%；train占trainval的50%，val占trainval的50%；
 上面所占百分比可根据自己的数据集修改，如果数据集比较少，test和val可少一些
-
-代码如下：
-
-%注意修改下面四个值  
-xmlfilepath='/home/leo/PythonProjects/CHINESE-OCR/CHINESE-OCR_workspace/ctpn_data/VOCdevkit/VOC2007/Annotations';  
-txtsavepath='/home/leo/PythonProjects/CHINESE-OCR/CHINESE-OCR_workspace/ctpn_data/VOCdevkit/VOC2007/ImageSets/Main/';  
-trainval_percent=0.5; #trainval占整个数据集的百分比，剩下部分就是test所占百分比  
-train_percent=0.5; #train占trainval的百分比，剩下部分就是val所占百分比  
-
-xmlfile=dir(xmlfilepath);  
-numOfxml=length(xmlfile)-2;#减去.和..  总的数据集大小  
-
-trainval=sort(randperm(numOfxml,floor(numOfxml*trainval_percent)));  
-test=sort(setdiff(1:numOfxml,trainval));  
-
-trainvalsize=length(trainval); #trainval的大小  
-train=sort(trainval(randperm(trainvalsize,floor(trainvalsize*train_percent))));  
-val=sort(setdiff(trainval,train));  
-
-ftrainval=fopen([txtsavepath 'trainval.txt'],'w');  
-ftest=fopen([txtsavepath 'test.txt'],'w');  
-ftrain=fopen([txtsavepath 'train.txt'],'w');  
-fval=fopen([txtsavepath 'val.txt'],'w');  
-
-for i=1:numOfxml  
-    if ismember(i,trainval)  
-        fprintf(ftrainval,'%s\n',xmlfile(i+2).name(1:end-4));  
-        if ismember(i,train)  
-            fprintf(ftrain,'%s\n',xmlfile(i+2).name(1:end-4));  
-        else  
-            fprintf(fval,'%s\n',xmlfile(i+2).name(1:end-4));  
-        end  
-    else  
-        fprintf(ftest,'%s\n',xmlfile(i+2).name(1:end-4));  
-    end  
-end  
-fclose(ftrainval);  
-fclose(ftrain);  
-fclose(fval);  
-fclose(ftest);
-
-
-
-对应/home/leo/PythonProjects/CHINESE-OCR/CHINESE-OCR_workspace/ctpn_data/VOCdevkit/VOC2007(我们只有这个训练集),
-VOC2012
-VOC0712
-对应/VOC2007/ImageSets/Main中'train.txt', 'val.txt', 'trainval.txt', 'test.txt'
 
 
 
