@@ -19,6 +19,7 @@ echo '## 请查看ctpn_data文件夹'
 
 echo '## 4. 训练ctpn'
 cd /workspace/CHINESE-OCR/ctpn/output/ctpn_end2end/voc_2007_trainval/
+mv /workspace/CHINESE-OCR/ctpn/output/ctpn_end2end/voc_2007_trainval /workspace/bak/voc_2007_trainval_`date +%Y%m%d_%H%M%S`
 rm VGGnet_fast*
 rm checkpoint
 cd /workspace/CHINESE-OCR/ctpn/ctpn
